@@ -11,17 +11,137 @@ public interface JavaGrammarConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int PLUS = 5;
+  int IDENTIFICADOR = 8;
   /** RegularExpression Id. */
-  int MINUS = 6;
+  int LETRA = 9;
   /** RegularExpression Id. */
-  int MULTIPLY = 7;
+  int DIGITO = 10;
   /** RegularExpression Id. */
-  int DIVIDE = 8;
+  int INTEGER_LITERAL = 11;
   /** RegularExpression Id. */
-  int CONSTANT = 9;
+  int DECIMAL_LITERAL = 12;
   /** RegularExpression Id. */
-  int DIGIT = 10;
+  int FLOATING_POINT_LITERAL = 13;
+  /** RegularExpression Id. */
+  int EXPONENT = 14;
+  /** RegularExpression Id. */
+  int CHARACTER_LITERAL = 15;
+  /** RegularExpression Id. */
+  int STRING_LITERAL = 16;
+  /** RegularExpression Id. */
+  int NULL = 17;
+  /** RegularExpression Id. */
+  int IMPORT = 18;
+  /** RegularExpression Id. */
+  int PACKAGE = 19;
+  /** RegularExpression Id. */
+  int CLASS = 20;
+  /** RegularExpression Id. */
+  int RETURN = 21;
+  /** RegularExpression Id. */
+  int PRINT = 22;
+  /** RegularExpression Id. */
+  int IF = 23;
+  /** RegularExpression Id. */
+  int ELSE = 24;
+  /** RegularExpression Id. */
+  int WHILE = 25;
+  /** RegularExpression Id. */
+  int FOR = 26;
+  /** RegularExpression Id. */
+  int TRUE = 27;
+  /** RegularExpression Id. */
+  int FALSE = 28;
+  /** RegularExpression Id. */
+  int INT = 29;
+  /** RegularExpression Id. */
+  int FLOAT = 30;
+  /** RegularExpression Id. */
+  int DOUBLE = 31;
+  /** RegularExpression Id. */
+  int STRING = 32;
+  /** RegularExpression Id. */
+  int CHAR = 33;
+  /** RegularExpression Id. */
+  int LONG = 34;
+  /** RegularExpression Id. */
+  int BOOLEAN = 35;
+  /** RegularExpression Id. */
+  int VOID = 36;
+  /** RegularExpression Id. */
+  int STATIC = 37;
+  /** RegularExpression Id. */
+  int FINAL = 38;
+  /** RegularExpression Id. */
+  int PRIVATE = 39;
+  /** RegularExpression Id. */
+  int PROTECTED = 40;
+  /** RegularExpression Id. */
+  int PUBLIC = 41;
+  /** RegularExpression Id. */
+  int AC = 42;
+  /** RegularExpression Id. */
+  int FC = 43;
+  /** RegularExpression Id. */
+  int AP = 44;
+  /** RegularExpression Id. */
+  int FP = 45;
+  /** RegularExpression Id. */
+  int AB = 46;
+  /** RegularExpression Id. */
+  int FB = 47;
+  /** RegularExpression Id. */
+  int VIRGULA = 48;
+  /** RegularExpression Id. */
+  int PONTO = 49;
+  /** RegularExpression Id. */
+  int PONTO_VIRGULA = 50;
+  /** RegularExpression Id. */
+  int PONTO_ASTERISCO = 51;
+  /** RegularExpression Id. */
+  int SOMA = 52;
+  /** RegularExpression Id. */
+  int SUBTRACAO = 53;
+  /** RegularExpression Id. */
+  int MUTIPLICACAO = 54;
+  /** RegularExpression Id. */
+  int DIVISAO = 55;
+  /** RegularExpression Id. */
+  int MODULO = 56;
+  /** RegularExpression Id. */
+  int SOMA_PLUS = 57;
+  /** RegularExpression Id. */
+  int SUBTRACAO_PLUS = 58;
+  /** RegularExpression Id. */
+  int MULTIPLICACAO_PLUS = 59;
+  /** RegularExpression Id. */
+  int DIVISAO_PLUS = 60;
+  /** RegularExpression Id. */
+  int MODULO_PLUS = 61;
+  /** RegularExpression Id. */
+  int ATRIBUICAO = 62;
+  /** RegularExpression Id. */
+  int INCREMENTO = 63;
+  /** RegularExpression Id. */
+  int DECREMENTO = 64;
+  /** RegularExpression Id. */
+  int IGUALDADE = 65;
+  /** RegularExpression Id. */
+  int DIFERENCA = 66;
+  /** RegularExpression Id. */
+  int MENOR = 67;
+  /** RegularExpression Id. */
+  int MAIOR = 68;
+  /** RegularExpression Id. */
+  int MENOR_IGUAL = 69;
+  /** RegularExpression Id. */
+  int MAIOR_IGUAL = 70;
+  /** RegularExpression Id. */
+  int AND = 71;
+  /** RegularExpression Id. */
+  int OR = 72;
+  /** RegularExpression Id. */
+  int NEGACAO = 73;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -33,15 +153,76 @@ public interface JavaGrammarConstants {
     "\"\\r\"",
     "\"\\t\"",
     "\"\\n\"",
+    "\"//\"",
+    "\"/*\"",
+    "\"*/\"",
+    "<IDENTIFICADOR>",
+    "<LETRA>",
+    "<DIGITO>",
+    "<INTEGER_LITERAL>",
+    "<DECIMAL_LITERAL>",
+    "<FLOATING_POINT_LITERAL>",
+    "<EXPONENT>",
+    "<CHARACTER_LITERAL>",
+    "<STRING_LITERAL>",
+    "\"null\"",
+    "\"import\"",
+    "\"package\"",
+    "\"class\"",
+    "\"return\"",
+    "\"System.out.println\"",
+    "\"if\"",
+    "\"else\"",
+    "\"while\"",
+    "\"for\"",
+    "\"true\"",
+    "\"false\"",
+    "\"int\"",
+    "\"float\"",
+    "\"double\"",
+    "\"string\"",
+    "\"char\"",
+    "\"long\"",
+    "\"boolean\"",
+    "\"void\"",
+    "\"static\"",
+    "\"final\"",
+    "\"private\"",
+    "\"protected\"",
+    "\"public\"",
+    "\"{\"",
+    "\"}\"",
+    "\"(\"",
+    "\")\"",
+    "\"[\"",
+    "\"]\"",
+    "\",\"",
+    "\".\"",
+    "\";\"",
+    "\".*\"",
     "\"+\"",
     "\"-\"",
     "\"*\"",
     "\"/\"",
-    "<CONSTANT>",
-    "<DIGIT>",
-    "\";\"",
-    "\"(\"",
-    "\")\"",
+    "\"%\"",
+    "\"+=\"",
+    "\"-=\"",
+    "\"*=\"",
+    "\"/=\"",
+    "\"%=\"",
+    "\"=\"",
+    "\"++\"",
+    "\"--\"",
+    "\"==\"",
+    "\"!=\"",
+    "\"<\"",
+    "\">\"",
+    "\"<=\"",
+    "\">=\"",
+    "\"&&\"",
+    "\"||\"",
+    "\"!\"",
+    "\"public static void main\"",
   };
 
 }
