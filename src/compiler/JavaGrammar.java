@@ -139,7 +139,7 @@ public class JavaGrammar implements JavaGrammarConstants {
     label_4:
     while (true) {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-      case 74:
+      case 75:
         ;
         break;
       default:
@@ -151,7 +151,7 @@ public class JavaGrammar implements JavaGrammarConstants {
   }
 
   static final public void Main() throws ParseException {
-    jj_consume_token(74);
+    jj_consume_token(75);
     jj_consume_token(AP);
     jj_consume_token(STRING);
     jj_consume_token(AB);
@@ -185,13 +185,22 @@ public class JavaGrammar implements JavaGrammarConstants {
     while (true) {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case RETURN:
+      case PRINT:
+      case IF:
+      case WHILE:
       case INT:
       case FLOAT:
-      case DOUBLE:
       case STRING:
       case CHAR:
       case BOOLEAN:
       case VOID:
+      case AP:
+      case NEGACAO:
+      case IDENTIFICADOR:
+      case INTEGER_LITERAL:
+      case FLOATING_POINT_LITERAL:
+      case CHARACTER_LITERAL:
+      case STRING_LITERAL:
         ;
         break;
       default:
@@ -207,7 +216,6 @@ public class JavaGrammar implements JavaGrammarConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case INT:
     case FLOAT:
-    case DOUBLE:
     case STRING:
     case CHAR:
     case BOOLEAN:
@@ -230,6 +238,25 @@ public class JavaGrammar implements JavaGrammarConstants {
       }
       jj_consume_token(PONTO_VIRGULA);
       break;
+    case IF:
+      If_Else();
+      break;
+    case PRINT:
+      Print();
+      break;
+    case WHILE:
+      While();
+      break;
+    case AP:
+    case NEGACAO:
+    case IDENTIFICADOR:
+    case INTEGER_LITERAL:
+    case FLOATING_POINT_LITERAL:
+    case CHARACTER_LITERAL:
+    case STRING_LITERAL:
+      Expressao();
+      jj_consume_token(PONTO_VIRGULA);
+      break;
     default:
       jj_la1[10] = jj_gen;
       jj_consume_token(-1);
@@ -244,9 +271,6 @@ public class JavaGrammar implements JavaGrammarConstants {
       break;
     case FLOAT:
       jj_consume_token(FLOAT);
-      break;
-    case DOUBLE:
-      jj_consume_token(DOUBLE);
       break;
     case STRING:
       jj_consume_token(STRING);
@@ -320,6 +344,310 @@ public class JavaGrammar implements JavaGrammarConstants {
     OpcoesDeInicializacao();
   }
 
+  static final public void If_Else() throws ParseException {
+    jj_consume_token(IF);
+    jj_consume_token(AP);
+    Expressao();
+    jj_consume_token(FP);
+    BlocoDeDeclaracoes();
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case ELSE:
+      jj_consume_token(ELSE);
+      BlocoDeDeclaracoes();
+      break;
+    default:
+      jj_la1[15] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void Print() throws ParseException {
+    jj_consume_token(PRINT);
+    jj_consume_token(AP);
+    Expressao();
+    jj_consume_token(FP);
+    jj_consume_token(PONTO_VIRGULA);
+  }
+
+  static final public void While() throws ParseException {
+    jj_consume_token(WHILE);
+    jj_consume_token(AP);
+    Expressao();
+    jj_consume_token(FP);
+    BlocoDeDeclaracoes();
+  }
+
+  static final public void Expressao() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case NEGACAO:
+      jj_consume_token(NEGACAO);
+      break;
+    default:
+      jj_la1[16] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case IDENTIFICADOR:
+    case INTEGER_LITERAL:
+    case FLOATING_POINT_LITERAL:
+    case CHARACTER_LITERAL:
+    case STRING_LITERAL:
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case IDENTIFICADOR:
+        jj_consume_token(IDENTIFICADOR);
+        switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+        case AP:
+        case INCREMENTO:
+        case DECREMENTO:
+          switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+          case AP:
+            ChamadaDeMetodo();
+            break;
+          case INCREMENTO:
+            jj_consume_token(INCREMENTO);
+            break;
+          case DECREMENTO:
+            jj_consume_token(DECREMENTO);
+            break;
+          default:
+            jj_la1[17] = jj_gen;
+            jj_consume_token(-1);
+            throw new ParseException();
+          }
+          break;
+        default:
+          jj_la1[18] = jj_gen;
+          ;
+        }
+        break;
+      case INTEGER_LITERAL:
+      case FLOATING_POINT_LITERAL:
+      case CHARACTER_LITERAL:
+      case STRING_LITERAL:
+        ExpressaoLiteral();
+        break;
+      default:
+        jj_la1[19] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case SOMA:
+      case SUBTRACAO:
+      case MUTIPLICACAO:
+      case DIVISAO:
+      case MODULO:
+      case SOMA_PLUS:
+      case SUBTRACAO_PLUS:
+      case MULTIPLICACAO_PLUS:
+      case DIVISAO_PLUS:
+      case MODULO_PLUS:
+      case ATRIBUICAO:
+      case IGUALDADE:
+      case DIFERENCA:
+      case MENOR:
+      case MAIOR:
+      case MENOR_IGUAL:
+      case MAIOR_IGUAL:
+      case AND:
+      case OR:
+        switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+        case ATRIBUICAO:
+          Atribuicao();
+          break;
+        case AND:
+        case OR:
+          ComparacaoLogica();
+          break;
+        case IGUALDADE:
+        case DIFERENCA:
+        case MENOR:
+        case MAIOR:
+        case MENOR_IGUAL:
+        case MAIOR_IGUAL:
+          ComparacaoRelacional();
+          break;
+        case SOMA:
+        case SUBTRACAO:
+        case MUTIPLICACAO:
+        case DIVISAO:
+        case MODULO:
+        case SOMA_PLUS:
+        case SUBTRACAO_PLUS:
+        case MULTIPLICACAO_PLUS:
+        case DIVISAO_PLUS:
+        case MODULO_PLUS:
+          ExpressaoNumerica();
+          break;
+        default:
+          jj_la1[20] = jj_gen;
+          jj_consume_token(-1);
+          throw new ParseException();
+        }
+        break;
+      default:
+        jj_la1[21] = jj_gen;
+        ;
+      }
+      break;
+    case AP:
+      jj_consume_token(AP);
+      Expressao();
+      jj_consume_token(FP);
+      break;
+    default:
+      jj_la1[22] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+  }
+
+  static final public void ChamadaDeMetodo() throws ParseException {
+    jj_consume_token(AP);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case AP:
+    case NEGACAO:
+    case IDENTIFICADOR:
+    case INTEGER_LITERAL:
+    case FLOATING_POINT_LITERAL:
+    case CHARACTER_LITERAL:
+    case STRING_LITERAL:
+      ListaDeArgumentos();
+      break;
+    default:
+      jj_la1[23] = jj_gen;
+      ;
+    }
+    jj_consume_token(FP);
+  }
+
+  static final public void ListaDeArgumentos() throws ParseException {
+    Expressao();
+    label_7:
+    while (true) {
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case VIRGULA:
+        ;
+        break;
+      default:
+        jj_la1[24] = jj_gen;
+        break label_7;
+      }
+      jj_consume_token(VIRGULA);
+      Expressao();
+    }
+  }
+
+  static final public void ExpressaoLiteral() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case INTEGER_LITERAL:
+      jj_consume_token(INTEGER_LITERAL);
+      break;
+    case FLOATING_POINT_LITERAL:
+      jj_consume_token(FLOATING_POINT_LITERAL);
+      break;
+    case CHARACTER_LITERAL:
+      jj_consume_token(CHARACTER_LITERAL);
+      break;
+    case STRING_LITERAL:
+      jj_consume_token(STRING_LITERAL);
+      break;
+    default:
+      jj_la1[25] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+  }
+
+  static final public void Atribuicao() throws ParseException {
+    jj_consume_token(ATRIBUICAO);
+    Expressao();
+  }
+
+  static final public void ComparacaoLogica() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case AND:
+      jj_consume_token(AND);
+      break;
+    case OR:
+      jj_consume_token(OR);
+      break;
+    default:
+      jj_la1[26] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+    Expressao();
+  }
+
+  static final public void ComparacaoRelacional() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case MAIOR:
+      jj_consume_token(MAIOR);
+      break;
+    case MENOR:
+      jj_consume_token(MENOR);
+      break;
+    case MAIOR_IGUAL:
+      jj_consume_token(MAIOR_IGUAL);
+      break;
+    case MENOR_IGUAL:
+      jj_consume_token(MENOR_IGUAL);
+      break;
+    case IGUALDADE:
+      jj_consume_token(IGUALDADE);
+      break;
+    case DIFERENCA:
+      jj_consume_token(DIFERENCA);
+      break;
+    default:
+      jj_la1[27] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+    Expressao();
+  }
+
+  static final public void ExpressaoNumerica() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case SOMA:
+      jj_consume_token(SOMA);
+      break;
+    case SOMA_PLUS:
+      jj_consume_token(SOMA_PLUS);
+      break;
+    case SUBTRACAO:
+      jj_consume_token(SUBTRACAO);
+      break;
+    case SUBTRACAO_PLUS:
+      jj_consume_token(SUBTRACAO_PLUS);
+      break;
+    case MUTIPLICACAO:
+      jj_consume_token(MUTIPLICACAO);
+      break;
+    case MULTIPLICACAO_PLUS:
+      jj_consume_token(MULTIPLICACAO_PLUS);
+      break;
+    case DIVISAO:
+      jj_consume_token(DIVISAO);
+      break;
+    case DIVISAO_PLUS:
+      jj_consume_token(DIVISAO_PLUS);
+      break;
+    case MODULO:
+      jj_consume_token(MODULO);
+      break;
+    case MODULO_PLUS:
+      jj_consume_token(MODULO_PLUS);
+      break;
+    default:
+      jj_la1[28] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+    Expressao();
+  }
+
   static private boolean jj_initialized_once = false;
   /** Generated Token Manager. */
   static public JavaGrammarTokenManager token_source;
@@ -330,7 +658,7 @@ public class JavaGrammar implements JavaGrammarConstants {
   static public Token jj_nt;
   static private int jj_ntk;
   static private int jj_gen;
-  static final private int[] jj_la1 = new int[15];
+  static final private int[] jj_la1 = new int[29];
   static private int[] jj_la1_0;
   static private int[] jj_la1_1;
   static private int[] jj_la1_2;
@@ -340,13 +668,13 @@ public class JavaGrammar implements JavaGrammarConstants {
       jj_la1_init_2();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x80000,0x40000,0x0,0x0,0x0,0x0,0x0,0x0,0xe0200000,0x18020000,0xe0200000,0xe0000000,0x0,0x0,0x18020000,};
+      jj_la1_0 = new int[] {0x2000,0x1000,0x0,0x0,0x0,0x40000000,0x0,0x80000000,0x1f8b8000,0x600800,0x1f8b8000,0x1f800000,0x0,0x0,0x600800,0x40000,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x0,0x0,0x20000,0x20000,0x80000,0x40,0x0,0x380,0x1b,0x0,0x1b,0x1b,0x10000,0x40000000,0x0,};
+      jj_la1_1 = new int[] {0x0,0x0,0x200,0x200,0x800,0x0,0x0,0x3,0x10,0x0,0x10,0x0,0x100,0x400000,0x0,0x0,0x0,0x1800010,0x1800010,0x0,0xfe7ff000,0xfe7ff000,0x10,0x10,0x100,0x0,0x80000000,0x7e000000,0x3ff000,};
    }
    private static void jj_la1_init_2() {
-      jj_la1_2 = new int[] {0x0,0x0,0x0,0x0,0x0,0x0,0x400,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,};
+      jj_la1_2 = new int[] {0x0,0x0,0x0,0x0,0x0,0x0,0x800,0x0,0x6a6,0x0,0x6a6,0x0,0x0,0x0,0x0,0x0,0x2,0x0,0x0,0x6a4,0x1,0x1,0x6a4,0x6a6,0x0,0x6a0,0x1,0x0,0x0,};
    }
 
   /** Constructor with InputStream. */
@@ -367,7 +695,7 @@ public class JavaGrammar implements JavaGrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -381,7 +709,7 @@ public class JavaGrammar implements JavaGrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Constructor. */
@@ -398,7 +726,7 @@ public class JavaGrammar implements JavaGrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -408,7 +736,7 @@ public class JavaGrammar implements JavaGrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Constructor with generated Token Manager. */
@@ -424,7 +752,7 @@ public class JavaGrammar implements JavaGrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -433,7 +761,7 @@ public class JavaGrammar implements JavaGrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 15; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   static private Token jj_consume_token(int kind) throws ParseException {
@@ -484,12 +812,12 @@ public class JavaGrammar implements JavaGrammarConstants {
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[75];
+    boolean[] la1tokens = new boolean[76];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 29; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {
@@ -504,7 +832,7 @@ public class JavaGrammar implements JavaGrammarConstants {
         }
       }
     }
-    for (int i = 0; i < 75; i++) {
+    for (int i = 0; i < 76; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

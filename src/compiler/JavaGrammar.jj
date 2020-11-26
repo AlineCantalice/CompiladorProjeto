@@ -4,81 +4,20 @@
 
 public class JavaGrammar{  public static void main(String args []) throws ParseException  {    JavaGrammar parser = new JavaGrammar(System.in);    while (true)    {      System.out.println("Reading from standard input...");      System.out.print("Enter an expression like \"1+(2+3)*4;\" :");      try      {        switch (JavaGrammar.INICIO())        {          case 0 :           System.out.println("OK.");          break;          case 1 :           System.out.println("Goodbye.");          break;          default :           break;        }      }      catch (Exception e)      {        System.out.println("NOK.");        System.out.println(e.getMessage());        JavaGrammar.ReInit(System.in);      }      catch (Error e)      {        System.out.println("Oops.");        System.out.println(e.getMessage());        break;      }    }  }}PARSER_END(JavaGrammar)
 // Expressoes ignoradasSKIP :{  " "| "\r"| "\t"| "\n"
-| "//"
-| "/*"
-| "*/"}
-// Identificador
-TOKEN :
-{
-  < IDENTIFICADOR :
-    < LETRA >
-    (
-      < LETRA >
-    | < DIGITO >
-    | "_"
-    | "$"
-    )* >		
-  {
-    System.out.println("\nIdentificador: " + image);
-  }
-| 	< #LETRA : ([ "a"-"z", "A"-"Z" ]) >
-| 	< #DIGITO : [ "0"-"9" ] >
+| "//" : comentarioSimples
+| "/*" : comentarioLongo}
+
+< comentarioSimples >
+SKIP:
+{  "\n" : DEFAULT
+| < ~[] >
 }
 
-TOKEN :
-{
-  < INTEGER_LITERAL : < DECIMAL_LITERAL > ([ "l", "L" ])? >		
-  {
-    System.out.println("Literal Inteiro: " + image);
-  }
-| < #DECIMAL_LITERAL : [ "0"-"9" ] ([ "0"-"9" ])* >
-| < FLOATING_POINT_LITERAL :
-    ([ "0"-"9" ])+ "." ([ "0"-"9" ])* (< EXPONENT >)? ([ "f", "F", "d", "D" ])?
-  | "." ([ "0"-"9" ])+ (< EXPONENT >)? ([ "f", "F", "d", "D" ])?
-  | ([ "0"-"9" ])+ < EXPONENT > ([ "f", "F", "d", "D" ])?
-  | ([ "0"-"9" ])+ (< EXPONENT >)? [ "f", "F", "d", "D" ] >			
-  {
-    System.out.println("\nLiteral Ponto Flutuante: " + image);
-  }
-| < #EXPONENT : [ "e", "E" ] ([ "+", "-" ])? ([ "0"-"9" ])+ >
-| < CHARACTER_LITERAL :
-    "'"
-    (
-      (~[ "'", "\\", "\n", "\r" ])
-    |
-      (
-        "\\"
-        (
-          [ "n", "t", "b", "r", "f", "\\", "'", "\"" ]
-        | [ "0"-"7" ] ([ "0"-"7" ])?
-        | [ "0"-"3" ] [ "0"-"7" ] [ "0"-"7" ]
-        )
-      )
-    )
-    "'" >				
-  {
-    System.out.println("\nLiteral Char: " + image);
-  }
-| < STRING_LITERAL :
-    "\""
-    (
-      (~[ "\"", "\\", "\n", "\r" ])
-    |
-      (
-        "\\"
-        (
-          [ "n", "t", "b", "r", "f", "\\", "'", "\"" ]
-        | [ "0"-"7" ] ([ "0"-"7" ])?
-        | [ "0"-"3" ] [ "0"-"7" ] [ "0"-"7" ]
-        )
-      )
-    )*
-    "\"" >				
-  {
-    System.out.println("\nLiteral String: " + image);
-  }
-}
-
+< comentarioLongo >
+SKIP:
+{  "*/" : DEFAULT
+| < ~[] >
+}
 //Palavras reservadas
 TOKEN :
 {
@@ -141,19 +80,11 @@ TOKEN :
   {
     System.out.println("\nTipo de Dados: " + image);
   }
-| < DOUBLE : "double" >
-  {
-    System.out.println("\nTipo de Dados: " + image);
-  }
 | < STRING : "string" >
   {
     System.out.println("\nTipo de Dados: " + image);
   }
 | < CHAR : "char" >
-  {
-    System.out.println("\nTipo de Dados: " + image);
-  }
-| < LONG : "long" >
   {
     System.out.println("\nTipo de Dados: " + image);
   }
@@ -334,6 +265,78 @@ TOKEN :
 
 }
 
+// Identificador
+TOKEN :
+{
+  < IDENTIFICADOR :
+    < LETRA >
+    (
+      < LETRA >
+    | < DIGITO >
+    | "_"
+    | "$"
+    )* >		
+  {
+    System.out.println("\nIdentificador: " + image);
+  }
+| 	< #LETRA : ([ "a"-"z", "A"-"Z" ]) >
+| 	< #DIGITO : [ "0"-"9" ] >
+}
+
+TOKEN :
+{
+  < INTEGER_LITERAL : < DECIMAL_LITERAL > ([ "l", "L" ])? >		
+  {
+    System.out.println("Literal Inteiro: " + image);
+  }
+| < #DECIMAL_LITERAL : [ "0"-"9" ] ([ "0"-"9" ])* >
+| < FLOATING_POINT_LITERAL :
+    ([ "0"-"9" ])+ "." ([ "0"-"9" ])* (< EXPONENT >)? ([ "f", "F", "d", "D" ])?
+  | "." ([ "0"-"9" ])+ (< EXPONENT >)? ([ "f", "F", "d", "D" ])?
+  | ([ "0"-"9" ])+ < EXPONENT > ([ "f", "F", "d", "D" ])?
+  | ([ "0"-"9" ])+ (< EXPONENT >)? [ "f", "F", "d", "D" ] >			
+  {
+    System.out.println("\nLiteral Ponto Flutuante: " + image);
+  }
+| < #EXPONENT : [ "e", "E" ] ([ "+", "-" ])? ([ "0"-"9" ])+ >
+| < CHARACTER_LITERAL :
+    "'"
+    (
+      (~[ "'", "\\", "\n", "\r" ])
+    |
+      (
+        "\\"
+        (
+          [ "n", "t", "b", "r", "f", "\\", "'", "\"" ]
+        | [ "0"-"7" ] ([ "0"-"7" ])?
+        | [ "0"-"3" ] [ "0"-"7" ] [ "0"-"7" ]
+        )
+      )
+    )
+    "'" >				
+  {
+    System.out.println("\nLiteral Char: " + image);
+  }
+| < STRING_LITERAL :
+    "\""
+    (
+      (~[ "\"", "\\", "\n", "\r" ])
+    |
+      (
+        "\\"
+        (
+          [ "n", "t", "b", "r", "f", "\\", "'", "\"" ]
+        | [ "0"-"7" ] ([ "0"-"7" ])?
+        | [ "0"-"3" ] [ "0"-"7" ] [ "0"-"7" ]
+        )
+      )
+    )*
+    "\"" >				
+  {
+    System.out.println("\nLiteral String: " + image);
+  }
+}
+
 /*
 * GRAMATICA DA LINGUAGEM JAVA
 */
@@ -421,6 +424,10 @@ void CorpoDaDeclaracao() :
 {
   TipoDeDado() < IDENTIFICADOR > DeclaracaoDeVariavel()
 | < RETURN > [ OpcoesDeRetorno() ] ";"
+| If_Else()
+| Print()
+| While()
+| Expressao() ";"
 }
 
 void TipoDeDado() :
@@ -428,7 +435,6 @@ void TipoDeDado() :
 {
   "int"
 | "float"
-| "double"
 | "string"
 | "char"
 | "boolean"
@@ -464,6 +470,124 @@ void OpcoesDeRetorno() :
 {
   OpcoesDeInicializacao()
 }
+  
+void If_Else():
+{ }
+{
+  < IF > "(" Expressao() ")" BlocoDeDeclaracoes() [ < ELSE > BlocoDeDeclaracoes() ]
+}
+
+void Print():
+{ }
+{
+  < PRINT > "(" Expressao() ")" ";"
+}
+
+void While():
+{ }
+{
+  < WHILE > "(" Expressao() ")" BlocoDeDeclaracoes()
+}
+
+void Expressao():
+{ }
+{
+  [ < NEGACAO > ]
+  (    (      < IDENTIFICADOR >
+      [
+      	ChamadaDeMetodo()
+	     | < INCREMENTO >
+	     | < DECREMENTO >
+      ]
+      | ExpressaoLiteral()
+  	)
+  	[
+  	   Atribuicao()
+  	 | ComparacaoLogica()
+  	 | ComparacaoRelacional()
+  	 | ExpressaoNumerica()
+  	]
+  | "(" Expressao() ")"
+ )
+}
+  
+void ChamadaDeMetodo():
+{ }
+{
+  "(" [ ListaDeArgumentos() ] ")"
+}
+
+void ListaDeArgumentos():
+{ }
+{
+  Expressao()
+  (    "," Expressao()
+  )*
+}
+
+void ExpressaoLiteral():
+{ }
+{
+  < INTEGER_LITERAL >
+| < FLOATING_POINT_LITERAL >
+| < CHARACTER_LITERAL >
+| < STRING_LITERAL >
+}
+
+
+void Atribuicao():
+{ }
+{
+  "=" Expressao()
+}
+
+void ComparacaoLogica():
+{ }
+{
+  (    "&&"
+  | "||"
+  )
+  Expressao()
+}
+
+void ComparacaoRelacional():
+{ }
+{
+  (
+    ">"
+  | "<"
+  | ">="
+  | "<="
+  | "=="
+  | "!="
+  )
+  Expressao()
+}
+  
+void ExpressaoNumerica():
+{ }
+{
+  (
+    "+"
+  | "+="
+  | "-"
+  | "-="
+  | "*"
+  | "*="
+  | "/"
+  | "/="
+  | "%"
+  | "%="
+  )
+  Expressao()
+}
+
+
+  
+  
+  
+  
+  
   
   
   

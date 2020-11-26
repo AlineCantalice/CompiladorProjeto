@@ -11,140 +11,140 @@ public interface JavaGrammarConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int IDENTIFICADOR = 8;
+  int NULL = 11;
   /** RegularExpression Id. */
-  int LETRA = 9;
+  int IMPORT = 12;
   /** RegularExpression Id. */
-  int DIGITO = 10;
+  int PACKAGE = 13;
   /** RegularExpression Id. */
-  int INTEGER_LITERAL = 11;
+  int CLASS = 14;
   /** RegularExpression Id. */
-  int DECIMAL_LITERAL = 12;
+  int RETURN = 15;
   /** RegularExpression Id. */
-  int FLOATING_POINT_LITERAL = 13;
+  int PRINT = 16;
   /** RegularExpression Id. */
-  int EXPONENT = 14;
+  int IF = 17;
   /** RegularExpression Id. */
-  int CHARACTER_LITERAL = 15;
+  int ELSE = 18;
   /** RegularExpression Id. */
-  int STRING_LITERAL = 16;
+  int WHILE = 19;
   /** RegularExpression Id. */
-  int NULL = 17;
+  int FOR = 20;
   /** RegularExpression Id. */
-  int IMPORT = 18;
+  int TRUE = 21;
   /** RegularExpression Id. */
-  int PACKAGE = 19;
+  int FALSE = 22;
   /** RegularExpression Id. */
-  int CLASS = 20;
+  int INT = 23;
   /** RegularExpression Id. */
-  int RETURN = 21;
+  int FLOAT = 24;
   /** RegularExpression Id. */
-  int PRINT = 22;
+  int STRING = 25;
   /** RegularExpression Id. */
-  int IF = 23;
+  int CHAR = 26;
   /** RegularExpression Id. */
-  int ELSE = 24;
+  int BOOLEAN = 27;
   /** RegularExpression Id. */
-  int WHILE = 25;
+  int VOID = 28;
   /** RegularExpression Id. */
-  int FOR = 26;
+  int STATIC = 29;
   /** RegularExpression Id. */
-  int TRUE = 27;
+  int FINAL = 30;
   /** RegularExpression Id. */
-  int FALSE = 28;
+  int PRIVATE = 31;
   /** RegularExpression Id. */
-  int INT = 29;
+  int PROTECTED = 32;
   /** RegularExpression Id. */
-  int FLOAT = 30;
+  int PUBLIC = 33;
   /** RegularExpression Id. */
-  int DOUBLE = 31;
+  int AC = 34;
   /** RegularExpression Id. */
-  int STRING = 32;
+  int FC = 35;
   /** RegularExpression Id. */
-  int CHAR = 33;
+  int AP = 36;
   /** RegularExpression Id. */
-  int LONG = 34;
+  int FP = 37;
   /** RegularExpression Id. */
-  int BOOLEAN = 35;
+  int AB = 38;
   /** RegularExpression Id. */
-  int VOID = 36;
+  int FB = 39;
   /** RegularExpression Id. */
-  int STATIC = 37;
+  int VIRGULA = 40;
   /** RegularExpression Id. */
-  int FINAL = 38;
+  int PONTO = 41;
   /** RegularExpression Id. */
-  int PRIVATE = 39;
+  int PONTO_VIRGULA = 42;
   /** RegularExpression Id. */
-  int PROTECTED = 40;
+  int PONTO_ASTERISCO = 43;
   /** RegularExpression Id. */
-  int PUBLIC = 41;
+  int SOMA = 44;
   /** RegularExpression Id. */
-  int AC = 42;
+  int SUBTRACAO = 45;
   /** RegularExpression Id. */
-  int FC = 43;
+  int MUTIPLICACAO = 46;
   /** RegularExpression Id. */
-  int AP = 44;
+  int DIVISAO = 47;
   /** RegularExpression Id. */
-  int FP = 45;
+  int MODULO = 48;
   /** RegularExpression Id. */
-  int AB = 46;
+  int SOMA_PLUS = 49;
   /** RegularExpression Id. */
-  int FB = 47;
+  int SUBTRACAO_PLUS = 50;
   /** RegularExpression Id. */
-  int VIRGULA = 48;
+  int MULTIPLICACAO_PLUS = 51;
   /** RegularExpression Id. */
-  int PONTO = 49;
+  int DIVISAO_PLUS = 52;
   /** RegularExpression Id. */
-  int PONTO_VIRGULA = 50;
+  int MODULO_PLUS = 53;
   /** RegularExpression Id. */
-  int PONTO_ASTERISCO = 51;
+  int ATRIBUICAO = 54;
   /** RegularExpression Id. */
-  int SOMA = 52;
+  int INCREMENTO = 55;
   /** RegularExpression Id. */
-  int SUBTRACAO = 53;
+  int DECREMENTO = 56;
   /** RegularExpression Id. */
-  int MUTIPLICACAO = 54;
+  int IGUALDADE = 57;
   /** RegularExpression Id. */
-  int DIVISAO = 55;
+  int DIFERENCA = 58;
   /** RegularExpression Id. */
-  int MODULO = 56;
+  int MENOR = 59;
   /** RegularExpression Id. */
-  int SOMA_PLUS = 57;
+  int MAIOR = 60;
   /** RegularExpression Id. */
-  int SUBTRACAO_PLUS = 58;
+  int MENOR_IGUAL = 61;
   /** RegularExpression Id. */
-  int MULTIPLICACAO_PLUS = 59;
+  int MAIOR_IGUAL = 62;
   /** RegularExpression Id. */
-  int DIVISAO_PLUS = 60;
+  int AND = 63;
   /** RegularExpression Id. */
-  int MODULO_PLUS = 61;
+  int OR = 64;
   /** RegularExpression Id. */
-  int ATRIBUICAO = 62;
+  int NEGACAO = 65;
   /** RegularExpression Id. */
-  int INCREMENTO = 63;
+  int IDENTIFICADOR = 66;
   /** RegularExpression Id. */
-  int DECREMENTO = 64;
+  int LETRA = 67;
   /** RegularExpression Id. */
-  int IGUALDADE = 65;
+  int DIGITO = 68;
   /** RegularExpression Id. */
-  int DIFERENCA = 66;
+  int INTEGER_LITERAL = 69;
   /** RegularExpression Id. */
-  int MENOR = 67;
+  int DECIMAL_LITERAL = 70;
   /** RegularExpression Id. */
-  int MAIOR = 68;
+  int FLOATING_POINT_LITERAL = 71;
   /** RegularExpression Id. */
-  int MENOR_IGUAL = 69;
+  int EXPONENT = 72;
   /** RegularExpression Id. */
-  int MAIOR_IGUAL = 70;
+  int CHARACTER_LITERAL = 73;
   /** RegularExpression Id. */
-  int AND = 71;
-  /** RegularExpression Id. */
-  int OR = 72;
-  /** RegularExpression Id. */
-  int NEGACAO = 73;
+  int STRING_LITERAL = 74;
 
   /** Lexical state. */
   int DEFAULT = 0;
+  /** Lexical state. */
+  int comentarioSimples = 1;
+  /** Lexical state. */
+  int comentarioLongo = 2;
 
   /** Literal token values. */
   String[] tokenImage = {
@@ -155,16 +155,10 @@ public interface JavaGrammarConstants {
     "\"\\n\"",
     "\"//\"",
     "\"/*\"",
+    "\"\\n\"",
+    "<token of kind 8>",
     "\"*/\"",
-    "<IDENTIFICADOR>",
-    "<LETRA>",
-    "<DIGITO>",
-    "<INTEGER_LITERAL>",
-    "<DECIMAL_LITERAL>",
-    "<FLOATING_POINT_LITERAL>",
-    "<EXPONENT>",
-    "<CHARACTER_LITERAL>",
-    "<STRING_LITERAL>",
+    "<token of kind 10>",
     "\"null\"",
     "\"import\"",
     "\"package\"",
@@ -179,10 +173,8 @@ public interface JavaGrammarConstants {
     "\"false\"",
     "\"int\"",
     "\"float\"",
-    "\"double\"",
     "\"string\"",
     "\"char\"",
-    "\"long\"",
     "\"boolean\"",
     "\"void\"",
     "\"static\"",
@@ -222,6 +214,15 @@ public interface JavaGrammarConstants {
     "\"&&\"",
     "\"||\"",
     "\"!\"",
+    "<IDENTIFICADOR>",
+    "<LETRA>",
+    "<DIGITO>",
+    "<INTEGER_LITERAL>",
+    "<DECIMAL_LITERAL>",
+    "<FLOATING_POINT_LITERAL>",
+    "<EXPONENT>",
+    "<CHARACTER_LITERAL>",
+    "<STRING_LITERAL>",
     "\"public static void main\"",
   };
 
