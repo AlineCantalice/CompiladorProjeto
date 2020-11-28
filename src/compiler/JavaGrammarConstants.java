@@ -29,115 +29,113 @@ public interface JavaGrammarConstants {
   /** RegularExpression Id. */
   int WHILE = 19;
   /** RegularExpression Id. */
-  int FOR = 20;
+  int TRUE = 20;
   /** RegularExpression Id. */
-  int TRUE = 21;
+  int FALSE = 21;
   /** RegularExpression Id. */
-  int FALSE = 22;
+  int INT = 22;
   /** RegularExpression Id. */
-  int INT = 23;
+  int FLOAT = 23;
   /** RegularExpression Id. */
-  int FLOAT = 24;
+  int STRING = 24;
   /** RegularExpression Id. */
-  int STRING = 25;
+  int CHAR = 25;
   /** RegularExpression Id. */
-  int CHAR = 26;
+  int BOOLEAN = 26;
   /** RegularExpression Id. */
-  int BOOLEAN = 27;
+  int VOID = 27;
   /** RegularExpression Id. */
-  int VOID = 28;
+  int STATIC = 28;
   /** RegularExpression Id. */
-  int STATIC = 29;
+  int FINAL = 29;
   /** RegularExpression Id. */
-  int FINAL = 30;
+  int PRIVATE = 30;
   /** RegularExpression Id. */
-  int PRIVATE = 31;
+  int PROTECTED = 31;
   /** RegularExpression Id. */
-  int PROTECTED = 32;
+  int PUBLIC = 32;
   /** RegularExpression Id. */
-  int PUBLIC = 33;
+  int AC = 33;
   /** RegularExpression Id. */
-  int AC = 34;
+  int FC = 34;
   /** RegularExpression Id. */
-  int FC = 35;
+  int AP = 35;
   /** RegularExpression Id. */
-  int AP = 36;
+  int FP = 36;
   /** RegularExpression Id. */
-  int FP = 37;
+  int AB = 37;
   /** RegularExpression Id. */
-  int AB = 38;
+  int FB = 38;
   /** RegularExpression Id. */
-  int FB = 39;
+  int VIRGULA = 39;
   /** RegularExpression Id. */
-  int VIRGULA = 40;
+  int PONTO = 40;
   /** RegularExpression Id. */
-  int PONTO = 41;
+  int PONTO_VIRGULA = 41;
   /** RegularExpression Id. */
-  int PONTO_VIRGULA = 42;
+  int PONTO_ASTERISCO = 42;
   /** RegularExpression Id. */
-  int PONTO_ASTERISCO = 43;
+  int SOMA = 43;
   /** RegularExpression Id. */
-  int SOMA = 44;
+  int SUBTRACAO = 44;
   /** RegularExpression Id. */
-  int SUBTRACAO = 45;
+  int MUTIPLICACAO = 45;
   /** RegularExpression Id. */
-  int MUTIPLICACAO = 46;
+  int DIVISAO = 46;
   /** RegularExpression Id. */
-  int DIVISAO = 47;
+  int MODULO = 47;
   /** RegularExpression Id. */
-  int MODULO = 48;
+  int SOMA_PLUS = 48;
   /** RegularExpression Id. */
-  int SOMA_PLUS = 49;
+  int SUBTRACAO_PLUS = 49;
   /** RegularExpression Id. */
-  int SUBTRACAO_PLUS = 50;
+  int MULTIPLICACAO_PLUS = 50;
   /** RegularExpression Id. */
-  int MULTIPLICACAO_PLUS = 51;
+  int DIVISAO_PLUS = 51;
   /** RegularExpression Id. */
-  int DIVISAO_PLUS = 52;
+  int MODULO_PLUS = 52;
   /** RegularExpression Id. */
-  int MODULO_PLUS = 53;
+  int ATRIBUICAO = 53;
   /** RegularExpression Id. */
-  int ATRIBUICAO = 54;
+  int INCREMENTO = 54;
   /** RegularExpression Id. */
-  int INCREMENTO = 55;
+  int DECREMENTO = 55;
   /** RegularExpression Id. */
-  int DECREMENTO = 56;
+  int IGUALDADE = 56;
   /** RegularExpression Id. */
-  int IGUALDADE = 57;
+  int DIFERENCA = 57;
   /** RegularExpression Id. */
-  int DIFERENCA = 58;
+  int MENOR = 58;
   /** RegularExpression Id. */
-  int MENOR = 59;
+  int MAIOR = 59;
   /** RegularExpression Id. */
-  int MAIOR = 60;
+  int MENOR_IGUAL = 60;
   /** RegularExpression Id. */
-  int MENOR_IGUAL = 61;
+  int MAIOR_IGUAL = 61;
   /** RegularExpression Id. */
-  int MAIOR_IGUAL = 62;
+  int AND = 62;
   /** RegularExpression Id. */
-  int AND = 63;
+  int OR = 63;
   /** RegularExpression Id. */
-  int OR = 64;
+  int NEGACAO = 64;
   /** RegularExpression Id. */
-  int NEGACAO = 65;
+  int IDENTIFICADOR = 65;
   /** RegularExpression Id. */
-  int IDENTIFICADOR = 66;
+  int LETRA = 66;
   /** RegularExpression Id. */
-  int LETRA = 67;
+  int DIGITO = 67;
   /** RegularExpression Id. */
-  int DIGITO = 68;
+  int INTEGER_LITERAL = 68;
   /** RegularExpression Id. */
-  int INTEGER_LITERAL = 69;
+  int DECIMAL_LITERAL = 69;
   /** RegularExpression Id. */
-  int DECIMAL_LITERAL = 70;
+  int FLOATING_POINT_LITERAL = 70;
   /** RegularExpression Id. */
-  int FLOATING_POINT_LITERAL = 71;
+  int EXPONENT = 71;
   /** RegularExpression Id. */
-  int EXPONENT = 72;
+  int CHARACTER_LITERAL = 72;
   /** RegularExpression Id. */
-  int CHARACTER_LITERAL = 73;
-  /** RegularExpression Id. */
-  int STRING_LITERAL = 74;
+  int STRING_LITERAL = 73;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -168,12 +166,11 @@ public interface JavaGrammarConstants {
     "\"if\"",
     "\"else\"",
     "\"while\"",
-    "\"for\"",
     "\"true\"",
     "\"false\"",
     "\"int\"",
     "\"float\"",
-    "\"string\"",
+    "\"String\"",
     "\"char\"",
     "\"boolean\"",
     "\"void\"",
