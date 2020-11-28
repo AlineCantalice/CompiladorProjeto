@@ -2,7 +2,15 @@
  * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
  */options{  static = true;}PARSER_BEGIN(JavaGrammar)package compiler;
 
-public class JavaGrammar{  public static void main(String args []) throws ParseException  {    JavaGrammar parser = new JavaGrammar(System.in);    while (true)    {      System.out.println("Reading from standard input...");      System.out.print("Enter an expression like \"1+(2+3)*4;\" :");      try      {        switch (JavaGrammar.INICIO())        {          case 0 :           System.out.println("OK.");          break;          case 1 :           System.out.println("Goodbye.");          break;          default :           break;        }      }      catch (Exception e)      {        System.out.println("NOK.");        System.out.println(e.getMessage());        JavaGrammar.ReInit(System.in);      }      catch (Error e)      {        System.out.println("Oops.");        System.out.println(e.getMessage());        break;      }    }  }}PARSER_END(JavaGrammar)
+public class JavaGrammar{  public static void main(String args []) throws ParseException  {
+    try { 	    JavaGrammar parser = new JavaGrammar(System.in);
+	    parser.INICIO();
+	    System.out.println("Foi compilado com exito");
+  	} catch(Exception e) {
+  	  	System.out.println(e.getMessage());
+  	  	System.out.println("Foram encontrado erros");
+  	}    /*while (true)    {      System.out.println("Reading from standard input...");      System.out.print("Enter an expression like \"1+(2+3)*4;\" :");      try      {        switch (JavaGrammar.Programa())        {          case 0 :           System.out.println("OK.");          break;          case 1 :           System.out.println("Goodbye.");          break;          default :           break;        }      }      catch (Exception e)      {        System.out.println("NOK.");        System.out.println(e.getMessage());        JavaGrammar.ReInit(System.in);      }      catch (Error e)      {        System.out.println("Oops.");        System.out.println(e.getMessage());        break;      }    }  }*/}
+}PARSER_END(JavaGrammar)
 // Expressoes ignoradasSKIP :{  " "| "\r"| "\t"| "\n"
 | "//" : comentarioSimples
 | "/*" : comentarioLongo}
